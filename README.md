@@ -23,9 +23,9 @@
 #####       from post man with method get => localhost:8000/api/v1/flights/search?origin_city=cairo&destination_city=atokyoa&type=1 
 #####       else in xammp from post man with method get=> localhost/my-flight/public/api/v1/flights/search?origin_city=cairo&destination_city=atokyoa&type=1
 #####
-##### open post man and import collection =>
+##### Api documentation  =>
 ##### and don't forget url change url 
-#####  https://www.postman.com/collections/344922bc9e2c95595db0
+#####  https://documenter.getpostman.com/view/7872127/TVK8cLiQ#9e058f34-b259-44c2-94ca-9d59b1c9b84c
 #####
 ##### if production setup
 ### In your host open SSH or clone project and archive it and upload archived file. whatever you are use and make following statments.
@@ -42,11 +42,16 @@
 #####
 #####
 #####
+
+
+##### Api documentation  =>
+##### and don't forget url change url 
+#####  https://documenter.getpostman.com/view/7872127/TVK8cLiQ#9e058f34-b259-44c2-94ca-9d59b1c9b84c
+
+
 ##### open post man and import collection =>
-##### and don't forget url change url <a href="https://www.postman.com/collections/344922bc9e2c95595db0" target="_blank">Api Collection </a>
+##### and don't forget url change url <a href="https://documenter.getpostman.com/view/7872127/TVK8cLiQ#9e058f34-b259-44c2-94ca-9d59b1c9b84c" target="_blank">Api documentation </a>
 
-
- <a href="https://www.postman.com/collections/344922bc9e2c95595db0" target="_blank">https://www.postman.com/collections/344922bc9e2c95595db0 </a>
 
 #####   
 ##### 
@@ -93,7 +98,7 @@
 #####  if cheapest path type = 0
 <p align="center"><img src="screenshots/flightcheapest.PNG" width="400"></p>
  
-##### open post man and import collection =>https://www.postman.com/collections/344922bc9e2c95595db0
+##### 
 ##### 
 
 <br/>
