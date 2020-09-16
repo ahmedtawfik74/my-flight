@@ -49,7 +49,7 @@
 #####   e. Landing time
 #####   
 #####   output
-<p align="center"><img src="https://drive.google.com/file/d/1WE3Jg-njHb1BCV1V7KfoUK1m-rNvMCxu/view?usp=sharing" width="400"></p>
+<p align="center"><img src="screenshots/flightpost.PNG" width="400"></p>
 
 #####   
 #####
@@ -64,10 +64,10 @@
 #####  Output: Flights schedule with the price and total duration
 #####
 ##### if fastest path type = 1
-<p align="center"><img src="https://drive.google.com/file/d/1Eg0QDKUT5exxb3Pq6UgaFogN6FzHGnvC/view?usp=sharing" width="400"></p>
+<p align="center"><img src="screenshots/flightpost.PNG/" width="400"></p>
 
 ##### if cheapest path type = 0
-<p align="center"><img src="https://drive.google.com/file/d/1ymBiwMOA8ZrkpNW29Dc1H2TJ4LrPVnRz/view?usp=sharing" width="400"></p>
+<p align="center"><img src="screenshots/flightpost.PNG" width="400"></p>
 
 
 ## Thank you.
