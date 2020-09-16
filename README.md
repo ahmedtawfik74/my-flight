@@ -23,6 +23,9 @@
 #####       from post man with method get => localhost:8000/api/v1/flights/search?origin_city=cairo&destination_city=atokyoa&type=1 
 #####       else in xammp from post man with method get=> localhost/my-flight/public/api/v1/flights/search?origin_city=cairo&destination_city=atokyoa&type=1
 #####
+##### open post man and import collection =>
+##### and don't forget url change url 
+#####  https://www.postman.com/collections/344922bc9e2c95595db0
 #####
 ##### if production setup
 ### In your host open SSH or clone project and archive it and upload archived file. whatever you are use and make following statments.
@@ -39,7 +42,13 @@
 #####
 #####
 #####
-#####
+##### open post man and import collection =>
+##### and don't forget url change url 
+#####  https://www.postman.com/collections/344922bc9e2c95595db0
+##### 
+<br/>
+<br/>
+##### 
 ##### 1. POST service that saves a flight’s information.
 ##### Input:
 #####   a. Origin city.
@@ -50,7 +59,9 @@
 #####   
 #####   output
 <p align="center"><img src="screenshots/flightpost.PNG" width="400"></p>
-
+<br/>
+<br/>
+<br/>
 #####   
 #####
 #####   
@@ -64,10 +75,18 @@
 #####  Output: Flights schedule with the price and total duration
 #####
 ##### if fastest path type = 1
-<p align="center"><img src="screenshots/flightpost.PNG/" width="400"></p>
-
+<p align="center"><img src="screenshots/flightfastest.PNG" width="400"></p>
+<br/>
+<br/>
+<br/>
+<br/>
 ##### if cheapest path type = 0
-<p align="center"><img src="screenshots/flightpost.PNG" width="400"></p>
+<p align="center"><img src="screenshots/flightcheapest.PNG" width="400"></p>
 
-
+##### open post man and import collection =>https://www.postman.com/collections/344922bc9e2c95595db0
+##### 
+<br/>
+<br/>
+<br/>
+<br/>
 ## Thank you.
