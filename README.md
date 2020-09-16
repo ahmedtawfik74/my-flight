@@ -24,7 +24,7 @@
 #####       else in xammp from post man with method get=> localhost/my-flight/public/api/v1/flights/search?origin_city=cairo&destination_city=atokyoa&type=1
 #####
 ##### Api documentation  =>
-##### and don't forget url change url 
+##### and don't forget change url 
 #####  https://documenter.getpostman.com/view/7872127/TVK8cLiQ#9e058f34-b259-44c2-94ca-9d59b1c9b84c
 #####
 ##### if production setup
