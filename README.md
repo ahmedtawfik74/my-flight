@@ -43,29 +43,38 @@
 #####
 #####
 ##### open post man and import collection =>
-##### and don't forget url change url 
-#####  https://www.postman.com/collections/344922bc9e2c95595db0
+##### and don't forget url change url <a href="https://www.postman.com/collections/344922bc9e2c95595db0" target="_blank">Api Collection </a>
+
+
+ <a href="https://www.postman.com/collections/344922bc9e2c95595db0" target="_blank">https://www.postman.com/collections/344922bc9e2c95595db0 </a>
+
+#####   
 ##### 
+
+
 <br/>
 <br/>
-##### 
-##### 1. POST service that saves a flight’s information.
-##### Input:
-#####   a. Origin city.
-#####   b. Destination city.
-#####   c. Price.
-#####   d. Take-off time.
-#####   e. Landing time
+
+
+#####  
+#####  1. POST service that saves a flight’s information.
+#####  Input:
+#####    a. Origin city.
+#####    b. Destination city.
+#####    c. Price.
+#####    d. Take-off time.
+#####    e. Landing time
 #####   
 #####   output
 <p align="center"><img src="screenshots/flightpost.PNG" width="400"></p>
 <br/>
 <br/>
 <br/>
-#####   
-#####
-#####   
-#####
+ 
+#####    
+##### 
+#####    
+##### 
 ##### GET service that searches for a flight and returns the best option. We can search for the
 ##### cheapest option or the fastest route option.
 ##### Input:
@@ -73,20 +82,23 @@
 #####  b. Destination city.
 #####  c. Option type (0 for cheapest, 1 for fastest).
 #####  Output: Flights schedule with the price and total duration
-#####
+##### 
 ##### if fastest path type = 1
 <p align="center"><img src="screenshots/flightfastest.PNG" width="400"></p>
 <br/>
 <br/>
 <br/>
-<br/>
-##### if cheapest path type = 0
-<p align="center"><img src="screenshots/flightcheapest.PNG" width="400"></p>
+<br/>  
 
+#####  if cheapest path type = 0
+<p align="center"><img src="screenshots/flightcheapest.PNG" width="400"></p>
+ 
 ##### open post man and import collection =>https://www.postman.com/collections/344922bc9e2c95595db0
 ##### 
+
 <br/>
 <br/>
 <br/>
-<br/>
-## Thank you.
+<br/> 
+  
+ ## Thank you.
