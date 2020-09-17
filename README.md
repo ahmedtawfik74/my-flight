@@ -6,7 +6,7 @@
 
 ## Quik Setup
 ##### if local host setup
-### In your xammp/htdocs open terminal/CMD whatever you are use and make following statments.
+### In your xampp/htdocs open terminal/CMD whatever you are use and make following statments.
 #####    1- Run git clone https://github.com/ahmedtawfik74/my-flight.git
 #####    2- Create a MySQL database for the project
 #####    3- move .env example to .env
@@ -21,7 +21,7 @@
 #####    11- Congratulations -_-.
 #####    12- if you prefer work with php artisan serve it's ok 
 #####       from post man with method get => localhost:8000/api/v1/flights/search?origin_city=cairo&destination_city=atokyoa&type=1 
-#####       else in xammp from post man with method get=> localhost/my-flight/public/api/v1/flights/search?origin_city=cairo&destination_city=atokyoa&type=1
+#####       else in xampp from post man with method get=> localhost/my-flight/public/api/v1/flights/search?origin_city=cairo&destination_city=atokyoa&type=1
 #####
 ##### Api documentation  =>
 ##### and don't forget change url 
