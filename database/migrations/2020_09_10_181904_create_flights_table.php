@@ -20,7 +20,6 @@ class CreateFlightsTable extends Migration
             $table->decimal('price', 20, 6);
             $table->dateTime('takeoff_time');
             $table->dateTime('landing_time');
-            $table->unsignedBigInteger('date_diff_in_min');
             $table->timestamps();
         });
     }

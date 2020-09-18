@@ -65,11 +65,11 @@ class SearchController extends Controller
 		//draw the graph of nodes as example $graph
 		foreach ($get_all_nodes as $key => $node)
 		{
-			$all_destinations = Flight::where('origin_city',$node)->where('takeoff_time','>=',$today)->where('landing_time','>=',$today)->get();
+			$all_destinations = Flight::where('origin_city',$node)->where('takeoff_time','>=',$today)->where('landing_time','>=',$today)->get(['id','origin_city','destination_city','takeoff_time','landing_time','price']);
 
 			foreach ($all_destinations as $key => $destination)
 			{
-				$all_points_dest[ $destination->destination_city ] = new FlightResouce($destination);
+				$all_points_dest[ $destination->destination_city ] =$destination->toArray();
 			}
 
 			$all_points[$node]	= $all_points_dest;

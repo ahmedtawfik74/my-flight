@@ -42,18 +42,19 @@ class Dijkstra
             {
                 if (isset($this->distance[$neighbor]))
                 {
+
                     if ($this->distance[$closest] + $cost['price'] < $this->distance[$neighbor])
                     {
                         // A shorter path was found
                         $this->distance[$neighbor]      = $this->distance[$closest] + $cost['price'];
-                        $this->previous[$neighbor]      = array($closest);
+                        $this->previous[$neighbor]      = array($cost);
                         $this->queue[$neighbor]         = $this->distance[$neighbor];
                         $this->availble_paths[$neighbor]= $cost;
                     }
                     elseif ($this->distance[$closest] + $cost['price'] === $this->distance[$neighbor])
                     {
                         // An equally short path was found
-                        $this->previous[$neighbor][]    = $closest;
+                        $this->previous[$neighbor][]    = $cost;
                         $this->queue[$neighbor]         = $this->distance[$neighbor];
                         $this->availble_paths[$neighbor]= $cost;
                     }
@@ -63,6 +64,7 @@ class Dijkstra
 
         unset($this->queue[$closest]);
     }
+
 
     /**
      * Extract all the paths from $source to $target as arrays of nodes.
@@ -73,19 +75,16 @@ class Dijkstra
      */
     protected function extractCheapestPaths($target)
     {
-        $array_path                 = array();
-        $paths                      = array(array($target));
-        $schedule                   = array();
-        $total_price                = 0;
-        $total_duration             = 0;
+        $paths                    = array(array($target));
 
-        for ($key = 0; isset($paths[$key]); ++$key)
+        for ($key = 0; ( isset($paths[$key]) && is_array($paths[$key]) ) ? array_key_exists(0, $paths[$key] ) : isset($paths[$key]); ++$key)
         {
             $path = $paths[$key];
 
-            if (!empty($this->previous[$path[0]])) {
-                foreach ($this->previous[$path[0]] as $previous)
-                {
+            $neighbors = (is_array($path[0]) ) ? $this->previous[ $path[0]['origin_city'] ]   : $this->previous[$path[0]] ;
+
+            if(  !empty($neighbors) ) {
+                foreach ($neighbors as $previous) {
                     $copy       = $path;
                     array_unshift($copy, $previous);
                     $paths[]    = $copy;
@@ -93,45 +92,71 @@ class Dijkstra
                 unset($paths[$key]);
             }
         }
+        $last_path= end($paths);
 
-        foreach (end($paths) as $key => $value)
-        {
-            if($key == 0) continue;
-            array_push($schedule, $this->availble_paths[$value]);
-            $total_duration     += $minutes = $this->getMinutesAsCoast(date_create($this->availble_paths[$value]['landing_time']), date_create($this->availble_paths[$value]['takeoff_time']));
+        array_pop($last_path);
 
-            $total_price        += $this->availble_paths[$value]['price'];
-        }
-        $total_duration_as_day_hour= $this->hoursandmins($total_duration, $format = '%02d Hours, %02d Minutes');
-        return array('total price' => $total_price, 'total duration' => $total_duration_as_day_hour, 'schedule' => $schedule );
+        $coastChepeastPath = $this->getTotalPriceChepeastPath($last_path);
+
+        return array(
+            'total price'    => $coastChepeastPath['total_price'],
+            'total duration' => $this->hoursandmins($coastChepeastPath['num_minutes'], $format = '%02d Hours, %02d Minutes'),
+            'schedule'       => $last_path
+        );
     }
+
+
+    private function getTotalPriceChepeastPath($last_path)
+    {
+        $total_price        = 0;
+        $num_minutes        = 0;
+
+        foreach ( $last_path as  $key => $path_value) {
+            
+            if(is_array($path_value)  && !empty($path_value) ){
+
+                $total_price += $path_value['price'];
+            }
+        }
+
+        if(is_array($last_path)  && !empty($last_path) ) {
+
+            $num_minutes = $this->getMinutesAsCoast(date_create(end($last_path)['landing_time']), date_create($last_path[0]['takeoff_time']) );
+        }
+
+        return array('total_price'=> $total_price, 'num_minutes'=>$num_minutes);
+    }//end function get Total Price Chepeast Path
+
 
     protected function processNextNodeInQueueFastest(array $exclude)
     {            
         // Process the closest vertex
         $closest = array_search(min($this->queue), $this->queue);
+
         if (!empty($this->graph[$closest]) && !in_array($closest, $exclude))
         {
             foreach ($this->graph[$closest] as $neighbor => $cost)
             {
+                //add new voast to get all paths available
+                $cost['!*_$_11_@_*!'] = 0;
                 if (isset($this->distance[$neighbor]))
                 {
-                    $minutes = $this->getMinutesAsCoast(date_create($cost['landing_time']), date_create($cost['takeoff_time']));
-                    if ($this->distance[$closest] + $minutes < $this->distance[$neighbor])
+                    if ($this->distance[$closest] + $cost['!*_$_11_@_*!'] < $this->distance[$neighbor])
                     {
                         // A shorter path was found
-                        $this->distance[$neighbor]      = $this->distance[$closest] + $minutes;
-                        $this->previous[$neighbor]      = array($closest);
+                        $this->distance[$neighbor]      = $this->distance[$closest] +$cost['!*_$_11_@_*!'];
+                        array_pop($cost);
+                        $this->previous[$neighbor]      = array($cost);
                         $this->queue[$neighbor]         = $this->distance[$neighbor];
-                        $this->availble_paths[$neighbor]= $cost;
-                        
+                        $this->availble_paths[]= $cost;
                     }
-                    elseif ($this->distance[$closest] + $minutes === $this->distance[$neighbor])
+                    elseif ($this->distance[$closest] + $cost['!*_$_11_@_*!'] === $this->distance[$neighbor])
                     {
                         // An equally short path was found
-                        $this->previous[$neighbor][]    = $closest;
+                        array_pop($cost);
+                        $this->previous[$neighbor][]    = $cost;
                         $this->queue[$neighbor]         = $this->distance[$neighbor];
-                        $this->availble_paths[$neighbor]= $cost;
+                        $this->availble_paths[]= $cost;
                     }
                 }
             }
@@ -140,20 +165,19 @@ class Dijkstra
     }
 
 
+
     protected function extractFastestPaths($target)
     {
-        $array_path                 = array();
-        $paths                      = array(array($target));
-        $schedule                   = array();
-        $total_price                = 0;
-        $total_duration             = 0;
+        $paths          = array(array($target));
 
-        for ($key = 0; isset($paths[$key]); ++$key)
+        for ($key = 0; ( isset($paths[$key]) && is_array($paths[$key]) ) ? array_key_exists(0, $paths[$key] ) : isset($paths[$key]); ++$key)
         {
             $path = $paths[$key];
 
-            if (!empty($this->previous[$path[0]])) {
-                foreach ($this->previous[$path[0]] as $previous)
+            $neighbors = (is_array($path[0]) ) ? $this->previous[ $path[0]['origin_city'] ]   : $this->previous[$path[0]] ;
+
+            if(  !empty($neighbors) ) {
+                foreach ($neighbors as $previous)
                 {
                     $copy       = $path;
                     array_unshift($copy, $previous);
@@ -162,18 +186,51 @@ class Dijkstra
                 unset($paths[$key]);
             }
         }
-        foreach (end($paths) as $key => $value)
-        {
-            if($key == 0) continue;
-            array_push($schedule, $this->availble_paths[$value]);
 
-            $total_duration    += $minutes = $this->getMinutesAsCoast(date_create($this->availble_paths[$value]['landing_time']), date_create($this->availble_paths[$value]['takeoff_time']));
+        $minimumTimeDuration= $this->getMinimumTimeDurationInPaths($paths);
 
-            $total_price       += $this->availble_paths[$value]['price'];
-        }
-        $total_duration_as_day_hour= $this->hoursandmins($total_duration, $format = '%02d Hours, %02d Minutes');
-        return array('total price' => $total_price, 'total duration' => $total_duration_as_day_hour,  'schedule' => $schedule );
+        array_pop($paths[$minimumTimeDuration['fastest_key']]);
+
+        return array(
+            'total price'       => $this->getTotalPriceFastestPath($paths[$minimumTimeDuration['fastest_key']]),
+            'total duration'    => $this->hoursandmins($minimumTimeDuration['minimum_minutes'], $format = '%02d Hours, %02d Minutes'),
+            'schedule'          => $paths[$minimumTimeDuration['fastest_key']] 
+        );
+
     }
+
+
+    private function getMinimumTimeDurationInPaths($paths)
+    {
+        $num_minutes          = 0;
+        $arr_num_minutes      = array();
+
+        foreach ($paths as  $key => $path_value) {
+            array_pop($path_value);
+
+            if(is_array($path_value)  && !empty($path_value) ){
+                $num_minutes = $this->getMinutesAsCoast(date_create(end($path_value)['landing_time']), date_create($path_value[0]['takeoff_time']) );
+            }
+            $arr_num_minutes[$key] = $num_minutes;
+        }
+        $fastest_key = array_search(min($arr_num_minutes),$arr_num_minutes );
+
+        return array('fastest_key'=> $fastest_key, 'minimum_minutes'=> min($arr_num_minutes));
+    }//end function get Key Minimum Time Duration In Paths
+
+
+
+    private function getTotalPriceFastestPath($path)
+    {
+        $total_price     = 0;
+
+        foreach ($path as $key => $value) {
+            $total_price += $path[$key]['price'];
+        }
+        return $total_price;
+    }//end function get Total Price Fastest Path
+
+
 
     /**
      * Calculate the shortest path through a a graph, from $source to $target.

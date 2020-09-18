@@ -15,12 +15,12 @@ class FlightResouce extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
-            'origin_city' => $this->origin_city,
-            'destination_city' => $this->destination_city,
-            'price' => $this->price,
-            'takeoff_time' => $this->takeoff_time,
-            'landing_time' => $this->landing_time
+            'id'                    => $this->id,
+            'origin_city'           => $this->origin_city,
+            'destination_city'      => $this->destination_city,
+            'price'                 => $this->price,
+            'takeoff_time'          => $this->takeoff_time,
+            'landing_time'          => $this->landing_time
         ];
     }
 }
