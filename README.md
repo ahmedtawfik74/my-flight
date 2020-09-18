@@ -6,7 +6,7 @@
 
 ## Quik Setup
 ##### if local host setup
-### In your xammp/htdocs open terminal/CMD whatever you are use and make following statments.
+### In your xampp/htdocs open terminal/CMD whatever you are use and make following statments.
 #####    1- Run git clone https://github.com/ahmedtawfik74/my-flight.git
 #####    2- Create a MySQL database for the project
 #####    3- move .env example to .env
@@ -21,8 +21,11 @@
 #####    11- Congratulations -_-.
 #####    12- if you prefer work with php artisan serve it's ok 
 #####       from post man with method get => localhost:8000/api/v1/flights/search?origin_city=cairo&destination_city=atokyoa&type=1 
-#####       else in xammp from post man with method get=> localhost/my-flight/public/api/v1/flights/search?origin_city=cairo&destination_city=atokyoa&type=1
+#####       else in xampp from post man with method get=> localhost/my-flight/public/api/v1/flights/search?origin_city=cairo&destination_city=atokyoa&type=1
 #####
+##### Api documentation  =>
+##### and don't forget change url 
+#####  https://documenter.getpostman.com/view/7872127/TVK8cLiQ#9e058f34-b259-44c2-94ca-9d59b1c9b84c
 #####
 ##### if production setup
 ### In your host open SSH or clone project and archive it and upload archived file. whatever you are use and make following statments.
@@ -39,22 +42,44 @@
 #####
 #####
 #####
-#####
-##### 1. POST service that saves a flight’s information.
-##### Input:
-#####   a. Origin city.
-#####   b. Destination city.
-#####   c. Price.
-#####   d. Take-off time.
-#####   e. Landing time
-#####   
-#####   output
-<p align="center"><img src="https://drive.google.com/file/d/1WE3Jg-njHb1BCV1V7KfoUK1m-rNvMCxu/view?usp=sharing" width="400"></p>
+
+
+##### Api documentation  =>
+##### and don't forget url change url 
+#####  https://documenter.getpostman.com/view/7872127/TVK8cLiQ#9e058f34-b259-44c2-94ca-9d59b1c9b84c
+
+
+##### open post man and import collection =>
+##### and don't forget url change url <a href="https://documenter.getpostman.com/view/7872127/TVK8cLiQ#9e058f34-b259-44c2-94ca-9d59b1c9b84c" target="_blank">Api documentation </a>
+
 
 #####   
-#####
+##### 
+
+
+<br/>
+<br/>
+
+
+#####  
+#####  1. POST service that saves a flight’s information.
+#####  Input:
+#####    a. Origin city.
+#####    b. Destination city.
+#####    c. Price.
+#####    d. Take-off time.
+#####    e. Landing time
 #####   
-#####
+#####   output
+<p align="center"><img src="screenshots/flightpost.PNG" width="400"></p>
+<br/>
+<br/>
+<br/>
+ 
+#####    
+##### 
+#####    
+##### 
 ##### GET service that searches for a flight and returns the best option. We can search for the
 ##### cheapest option or the fastest route option.
 ##### Input:
@@ -62,12 +87,23 @@
 #####  b. Destination city.
 #####  c. Option type (0 for cheapest, 1 for fastest).
 #####  Output: Flights schedule with the price and total duration
-#####
+##### 
 ##### if fastest path type = 1
-<p align="center"><img src="https://drive.google.com/file/d/1Eg0QDKUT5exxb3Pq6UgaFogN6FzHGnvC/view?usp=sharing" width="400"></p>
+<p align="center"><img src="screenshots/flightfastest.PNG" width="400"></p>
+<br/>
+<br/>
+<br/>
+<br/>  
 
-##### if cheapest path type = 0
-<p align="center"><img src="https://drive.google.com/file/d/1ymBiwMOA8ZrkpNW29Dc1H2TJ4LrPVnRz/view?usp=sharing" width="400"></p>
+#####  if cheapest path type = 0
+<p align="center"><img src="screenshots/flightcheapest.PNG" width="400"></p>
+ 
+##### 
+##### 
 
-
-## Thank you.
+<br/>
+<br/>
+<br/>
+<br/> 
+  
+ ## Thank you.
